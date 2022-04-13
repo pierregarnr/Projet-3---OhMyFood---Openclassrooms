@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Projet 3 - OhMyFood",
+		"git.ignoreLimitWarning": true
+	}
+}
