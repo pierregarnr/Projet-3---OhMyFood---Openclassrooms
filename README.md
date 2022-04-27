@@ -54,6 +54,7 @@ Debrief (5 minutes)
 Enfin, votre évaluateur reprendra pleinement son rôle d’évaluateur pendant 5 minutes pour que vous puissiez débriefer ensemble.
 
 **Compétences évaluées** ✔️
+
 -Mettre en place son environnement Front-End.
 
 -Assurer la cohérence graphique d'un site web.
