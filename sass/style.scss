@@ -1,12 +1,16 @@
-$cd-primary :#9356DC;
-$cd-secondary: #FF79DA;
-$cd-tertiary:#99E2D0;
-
-@mixin flexcentre {
+// Mixin
+@mixin flexcenter {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+// Couleurs sass
+$cd-primary :#9356DC;
+$cd-secondary: #FF79DA;
+$cd-tertiary:#99E2D0;
+
+// Debut version Desktop
 
 a {
     text-decoration: none;
@@ -19,46 +23,50 @@ p {
     font-family: 'Roboto', Arial, sans-serif;
 }
 
-h1 {
+h1, .h2 {
     font-family: 'Shrikhand', Arial, sans-serif;
 }
 
-//sizing and display
+//Sizing and display
 body {
     width: 100%;
     margin: 0;
 }
 
-html,
-body {
+html {
     scroll-behavior: smooth;
 }
 
 // Logo en-tête 
-.header-container {
-    background-color: white;
-    display: flex;
-    justify-content: center;
+.header {
+    @include flexcenter;
     padding: 23px 0 12px 0;
     margin-bottom: 3px;
     box-shadow: 5px -5px 15px 9px #b1b1b1;
 
-    .logo {
+    &__logo {
         width: 165px;
     }
+
+    i {
+        position: absolute;
+        left: 30px;
+        top: 28px;
+    }
+
+
 }
 
 
 // Partie Localisation du restaurant
-.localisation-search {
+.localisation {
     width: 100%;
     display: flex;
     justify-content: center;
     padding: 15px 0;
-    font-weight: 500;
     background: #eaeaea;
 
-    .mapIcon {
+    &__mapIcon {
         background-color: transparent;
         border: none;
         margin-right: 10px;
@@ -67,37 +75,36 @@ body {
 }
 
 // Exploration - Naviguation dans les restaurants
-section {
+.firstsection {
     padding-bottom: 50px;
     background-color: #f6f6f6;
+    display: flex;
+    justify-content: center;
 
-    .nav-resto {
+    &__resto {
         display: flex;
-        justify-content: center;
+        font-size: 19px;
         text-align: center;
         flex-direction: column;
         padding: 0 24px;
 
-        .title {
+        &__title {
             padding: 0 20px;
             margin: 41px 0 10px 0;
         }
 
-        .sub-title {
+        &__subtitle {
             font-size: 18px;
             font-weight: 300;
         }
 
-        .exploration {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        &__exploration {
+            @include flexcenter;
             height: 47px;
             margin: 12px 52px;
             border-radius: 25px;
-            border: none;
+            border: 0;
             font-size: 16px;
-            font-weight: 500;
             color: white;
             background: linear-gradient(178deg, rgba(255, 121, 218, 1) 0%, rgba(147, 86, 220, 1) 100%);
             -webkit-box-shadow: 0px 5px 15px -4px rgba(0, 0, 0, 0.55);
@@ -105,9 +112,9 @@ section {
             cursor: pointer;
         }
 
-        .exploration:hover {
+        &__exploration:hover {
             background: linear-gradient(178deg, rgba(255, 121, 218, 1) 0%, rgba(147, 86, 220, 1) 100%);
-            filter: brightness(1.1);
+            filter: brightness(1);
             -webkit-box-shadow: 0px 5px 15px -4px rgba(0, 0, 0, 1.5);
             box-shadow: 0px 5px 15px -4px rgba(0, 0, 0, 1.5);
         }
@@ -118,248 +125,190 @@ section {
 aside {
     display: flex;
     flex-direction: column;
-    margin: 10px 15px 70px 15px;
+    margin: 0;
     counter-reset: liste;
+    padding: 2% 3%;
 
-    .selection-container {
+    .options {
         gap: 20px;
         display: flex;
-        flex-direction: column;
         padding: 0 0 0 11px;
 
-        .selection-wrap:before {
+        &__selections:before {
+            @include flexcenter;
             counter-increment: liste 1;
             content: counter(liste) " ";
             width: 25px;
             height: 25px;
-            position: absolute;
-            left: 15px;
+            position: relative;
+            left: -9px;
             border-radius: 25px;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             background-color: $cd-primary;
         }
 
-        .selection-wrap {
+        &__selections {
             display: flex;
             align-items: center;
             height: 73px;
             width: 100%;
             border-radius: 25px;
-            border: none;
             font-size: 16px;
             font-weight: 500;
             background-color: #f6f6f6;
             -webkit-box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.25);
             box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.25);
 
-
-
-
-            .filtres-icon-text {
+            &__icontext {
                 display: flex;
                 align-items: center;
                 margin-left: 30px;
                 gap: 25px;
                 font-size: 16px;
-
-                .text-choice {
-                    font-weight: 600;
-                }
             }
         }
+
     }
 }
 
 
 // Main présentation des restaurants
-.resto-container {
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    gap: 16px;
 
-    .title-resto {
-        margin: 35px 0 4px 0;
+.restaurants {
+    background-color: #f6f6f6;
+    padding-bottom: 51px;
+
+    &__title {
+        padding: 2% 3%;
+        margin: 0;
     }
 
-    .resto-card {
-        margin: 0 auto;
-        border-radius: 15px;
-        -webkit-box-shadow: 5px 5px 15px -8px rgba(0, 0, 0, 0.61);
-        box-shadow: 5px 5px 15px -8px rgba(0, 0, 0, 0.61);
+    &__container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
 
-        .resto-card-img {
-            width: 100%;
-            min-width: 245px;
-            height: 11.7vw;
-            min-height: 172px;
-            object-fit: cover;
-            border-radius: 15px 15px 0 0;
-            z-index: 2;
-        }
-
-        .carre-nouveau-palette-card {
+        &__nouveau1 {
+            width: 57px;
+            padding: 5px 10px;
+            position: absolute;
+            margin-top: 10px;
+            right: 51vw;
             border: 2px solid $cd-tertiary;
             background-color: $cd-tertiary;
             color: green;
-            padding: 5px 10px;
             font-size: 13px;
             font-weight: 600;
-            position: absolute;
-            right: 30px;
-            top: 958px;
         }
 
-        .carre-nouveau-note-card {
+        &__nouveau2 {
+            width: 57px;
+            padding: 5px 10px;
+            position: absolute;
+            margin-top: 10px;
+            right: 3.8vw;
             border: 2px solid $cd-tertiary;
             background-color: $cd-tertiary;
             color: green;
-            padding: 5px 10px;
             font-size: 13px;
             font-weight: 600;
-            position: absolute;
-            right: 30px;
-            top: 1224px;
         }
 
-        figcaption {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-            height: 35px;
+        &__card {
+            margin: 0 auto;
+            border-radius: 15px;
+            -webkit-box-shadow: 5px 5px 15px -8px rgba(0, 0, 0, 0.61);
+            box-shadow: 5px 5px 15px -8px rgba(0, 0, 0, 0.61);
+            width: 45.7vw;
+            min-height: 250px;
+            background-color: white;
 
-            .description-resto {
-                line-height: 7px;
-                font-size: 12px;
-
-                .resto-card-title {
-                    font-weight: 600;
-                }
-
-                p {
-                    font-size: 17px;
-                    font-weight: 300;
-                }
+            &__img {
+                width: 100%;
+                min-width: 245px;
+                height: 11.7vw;
+                min-height: 172px;
+                object-fit: cover;
+                border-radius: 15px 15px 0 0;
+                z-index: 2;
             }
 
-            i {
-                font-size: 30px;
+            &__figcaption {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                height: 35px;
+
+                &__name {
+                    line-height: 7px;
+                    font-size: 12px;
+
+                    .resto-card-title {
+                        font-weight: 600;
+                    }
+
+                    p {
+                        font-size: 17px;
+                        font-weight: 300;
+                    }
+                }
             }
         }
     }
 }
-.heart-jauge-container {
-  width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    display: block;
-    background-color: #303030;
+
+// Animation coeur remplissage
+.heartcontainer {
     position: relative;
-    z-index: 2;
-}
-.heart-jauge-container > i{
-z-index: 1;
-}
-.jauge-remplissage {
-    transition: all 0.3s linear 0s;
-    background-color: #33BEE5;
     width: 30px;
-    height: 0;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 3;
-}
-.heart-jauge-container:hover .jauge-remplissage {
-    height: 100%;
-}
+    height: 30px;
 
-.jauge-remplissage {
-    margin-right: 1000px;
-    width: 15px;
-    height: 15px;
-    background-color: red;
-    position: absolute;
-    right: -958px;
-    bottom: -461px;
-    opacity: 0.5;
-    transform: rotate(315deg);
-}
-
-.jauge-remplissage:before,
-.jauge-remplissage:after {
-    content: "";
-    background-color: red;
-    width: 15px;
-    height: 15px;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-}
-
-.jauge-remplissage:before {
-    position: absolute;
-    left: 10px;
-    border-radius: 50%;
-}
-
-.jauge-remplissage:after {
-    content: "";
-    position: absolute;
-    top: -10px;
-}
-.jauge-remplissage:active {
-    animation: coeur 2.5s linear 0s;
-
-}
-
-@keyframes coeur {
-    25% {
-        height: 25%;
-        color: red;
+    &__heart-1 {
+        cursor: pointer;
+        font-size: 30px;
     }
-    50% {
-        height: 50%;
-        color: red;
+
+    &__heart-2 {
+        position: absolute;
+        left: 0;
+        color: #FF79DA;
+        transition: all 0.32s ease-in-out;
+        opacity: 0;
+        font-size: 30px
     }
-    75% {
-        height: 75%;
-        color: red;
-    }
-    100% {
-        height: 100%;
-        color: red;
+
+    &__heart-2:hover {
+        opacity: 1;
     }
 }
+
+// Fin animation coeur remplissage
 
 // Footer part 
-
 footer {
     background-color: #353535;
     color: white;
     padding-bottom: 10px;
 
-    .footer-container {
-        padding: 25px;
+    .ul-container {
+        padding: 2% 3%;
         line-height: 15px;
         list-style-type: none;
         margin: 0;
 
-        h1 {
+        .h2 {
             font-size: 19px;
             font-weight: normal;
-            margin-bottom: 22px;
+            margin: 16px 0;
         }
 
         li {
             line-height: 26px;
         }
 
-        .footer-proposition {
+        &__proposition {
             display: flex;
             align-items: center;
 
@@ -368,7 +317,7 @@ footer {
             }
         }
 
-        .footer-partner {
+        &__partner {
             display: flex;
             align-items: center;
 
@@ -385,32 +334,30 @@ footer {
     }
 }
 
-// Version Mobile 
+// Pages de menus 1-4 
 
-@media screen and (max-width: 767px) {}
-
-// Fin de la version mobile
-
-// Version tablette
-@media screen and (min-width: 768px) and (max-width: 992px) {}
-
-// Fin de la version tablette
-
-// Page de menu de 1-4 
 .img-menu {
     width: 100%;
+    max-height: 580px;
+    object-fit: cover;
     margin-top: -3px;
-    z-index: 2;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 .allmenu-container {
-    border-radius: 45px;
-    padding: 19px 10px 10px 19px;
-    margin-top: -4px;
-    z-index: 1;
+    max-width: 1280px;
     position: relative;
     top: -54px;
+    margin: auto;
+    margin-bottom: -52px;
+    padding: 16px 16px 120px 16px;
     background-color: #f6f6f6;
+    border-radius: 45px 45px 0 0;
+    z-index: 1;
 
     .icon-resto-name {
         display: flex;
@@ -434,6 +381,7 @@ footer {
         flex-direction: column;
         gap: 15px;
         margin-bottom: 30px;
+        width: 32%;
 
         .type-menu-title {
             width: 40px;
@@ -446,34 +394,51 @@ footer {
         }
 
         .menu {
+            max-width: 100%;
+            display: flex;
             border-radius: 15px;
-            padding: 9px 19px 5px 10px;
             line-height: 0px;
             box-shadow: 0px 5px 15px -5px rgb(0 0 0 / 25%);
+            margin: 0;
+            overflow: hidden;
+            cursor: pointer;
 
             .name-food {
+                margin-bottom: 9px;
                 font-size: 18px;
                 font-weight: 500;
-                margin-bottom: 9px;
             }
 
-            span {
+            .name-escort-div {
+                width: 100%;
                 display: flex;
-                justify-content: space-between;
+                flex-direction: column;
+                padding: 9px 19px 5px 10px;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
 
                 .escort-food {
                     font-size: 15px;
                     font-weight: 350;
                 }
+            }
+
+            .price-div {
+                display: flex;
+                justify-content: flex-end;
+                align-items: flex-end;
+                padding: 9px 19px 5px 0px;
 
                 .price-food {
                     font-size: 15px;
                     font-weight: 700;
                     color: #3a3838;
+                    margin-left: 10px;
                 }
             }
-        }
 
+        }
     }
 
     .button-wrapper {
@@ -497,16 +462,118 @@ footer {
 
 }
 
+// Animation glissade - coche 
+.glissade-check {
+    width: 0%;
+    @include flexcenter;
+    overflow: hidden;
+    background-color: $cd-tertiary;
+    color: white;
+    transition: width 420ms;
+    transition-timing-function: linear;
+
+    .rotation-check {
+        font-size: 22px;
+        transition: transform 500ms linear;
+    }
+}
+
+.menu:hover .glissade-check {
+    width: 30%;
+}
+
+.menu:hover .rotation-check {
+    transform: rotate(360deg);
+}
+
+// Fin animation glissade - coche
+
+//  Animation pop menus
+.menu {
+    animation: scale 0.4s linear both;
+    opacity: 0;
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    25% {
+        transform: scale(0.25);
+    }
+
+    50% {
+        transform: scale(0.5);
+    }
+
+    75% {
+        transform: scale(0.75);
+    }
+
+    85% {
+        transform: scale(0.85);
+    }
+
+    97% {
+        transform: scale(1.091);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.delay0 {
+    animation-delay: 0.1s;
+}
+
+.delay1 {
+    animation-delay: 0.2s;
+}
+
+.delay2 {
+    animation-delay: 0.3s;
+}
+
+.delay3 {
+    animation-delay: 0.4s;
+}
+
+.delay4 {
+    animation-delay: 0.5s;
+}
+
+.delay5 {
+    animation-delay: 0.6s;
+}
+
+.delay6 {
+    animation-delay: 0.7s;
+}
+
+.delay7 {
+    animation-delay: 0.8s;
+}
+
+.delay8 {
+    animation-delay: 0.9s;
+}
+
+.delay9 {
+    animation-delay: 1s;
+}
+
+// Fin Animation Apparition menus
 // Menu 1-4 FIN ----
 
 // Animmation spinner à l'entrée de la page
-
 .spinner {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexcenter;
     position: fixed;
     left: 0;
     top: 0;
@@ -514,36 +581,85 @@ footer {
     opacity: 0.95;
     z-index: 10000;
     animation: end-spinner 0.1s linear both 3s;
+
+    &__itemcontainer {
+        cursor: pointer;
+        height: 70px;
+        width: 70px;
+        position: relative;
+        animation: cercle 2.5s linear;
+        animation-iteration-count: 4;
+    }
+
+    &__load {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 100%;
+        animation: rotationcercle 2s ease-in;
+        animation-iteration-count: 4;
+    }
+
+    &__load:nth-child(1) {
+        animation-delay: -1.1s;
+    }
+
+    &__load:nth-child(2) {
+        animation-delay: -1.0s;
+    }
+
+    &__load:nth-child(3) {
+        animation-delay: -0.9s;
+    }
+
+    &__load:nth-child(4) {
+        animation-delay: -0.8s;
+    }
+
+    &__load:nth-child(5) {
+        animation-delay: -0.7s;
+    }
+
+    &__load:nth-child(6) {
+        animation-delay: -0.6s;
+    }
+
+    &__load:before {
+        content: '';
+        display: block;
+        width: 25%;
+        height: 25%;
+        background-color: #9356DC;
+        border-radius: 100%;
+        animation: rotationcercle-before 2s ease-in;
+        animation-iteration-count: 4;
+    }
+
+    &__load:nth-child(1):before {
+        animation-delay: -1.1s;
+    }
+
+    &__load:nth-child(2):before {
+        animation-delay: -1.0s;
+    }
+
+    &__load:nth-child(3):before {
+        animation-delay: -0.9s;
+    }
+
+    &__load:nth-child(4):before {
+        animation-delay: -0.8s;
+    }
+
+    &__load:nth-child(5):before {
+        animation-delay: -0.7s;
+    }
+
+    &__load:nth-child(6):before {
+        animation-delay: -0.6s;
+    }
 }
 
-.spinner-itemcontainer {
-    cursor: pointer;
-    height: 70px;
-    width: 70px;
-    position: relative;
-    animation: cercle 2.5s linear both;
-    animation-iteration-count: 4;
-}
-
-.spinner-load {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: 100%;
-    animation: rotationcercle 2s ease-in both;
-    animation-iteration-count: 4;
-}
-
-.spinner-load:before {
-    content: '';
-    display: block;
-    width: 25%;
-    height: 25%;
-    background-color: #9356DC;
-    border-radius: 100%;
-    animation: rotationcercle-before 2s ease-in both;
-    animation-iteration-count: 4;
-}
 
 @keyframes cercle {
     100% {
@@ -577,52 +693,74 @@ footer {
     }
 }
 
-.spinner-load:nth-child(1) {
-    animation-delay: -1.1s;
-}
+// Fin animation spinner load
 
-.spinner-load:nth-child(2) {
-    animation-delay: -1.0s;
-}
 
-.spinner-load:nth-child(3) {
-    animation-delay: -0.9s;
-}
+// Version Mobile
+@media screen and (max-width: 1023px) {
 
-.spinner-load:nth-child(4) {
-    animation-delay: -0.8s;
-}
+    // Page principale Accueil mobile
+    .firstsection__resto {
+        font-size: 16px;
+    }
 
-.spinner-load:nth-child(5) {
-    animation-delay: -0.7s;
-}
+    aside {
+        margin: 10px 15px 70px 15px;
+        padding: 0;
 
-.spinner-load:nth-child(6) {
-    animation-delay: -0.6s;
-}
+        .options {
+            flex-wrap: wrap;
+        }
+    }
 
-.spinner-load:nth-child(1):before {
-    animation-delay: -1.1s;
-}
 
-.spinner-load:nth-child(2):before {
-    animation-delay: -1.0s;
-}
+    .restaurants__container {
+        flex-direction: column;
+        padding: 15px;
+        gap: 16px;
 
-.spinner-load:nth-child(3):before {
-    animation-delay: -0.9s;
-}
+        &__card {
+            width: 100%;
+            min-width: 100%;
+            min-height: 100%;
+            background-color: white;
+            flex-direction: column;
+        }
 
-.spinner-load:nth-child(4):before {
-    animation-delay: -0.8s;
-}
+        &__nouveau1 {
+            position: absolute;
+            margin-top: 10px;
+            right: 27px;
+        }
 
-.spinner-load:nth-child(5):before {
-    animation-delay: -0.7s;
-}
+        &__nouveau2 {
+            position: absolute;
+            margin-top: 10px;
+            right: 27px;
+        }
+    }
 
-.spinner-load:nth-child(6):before {
-    animation-delay: -0.6s;
-}
+    // Fin page principal mobile
+    // Menu 1 - 4 mobile
+    .allmenu-container {
+        background-color: #f6f6f6;
+        border-radius: 45px 45px 0 45px;
+        padding: 19px 10px 100px 19px;
+        position: relative;
+        top: -54px;
+        width: auto;
+        margin: 0;
+        margin-bottom: -52px;
 
-// Animation sauvegarde boutton <3 
+        .menu-container {
+            display: block;
+            justify-content: space-between;
+        }
+
+        .entre-plat-dessert-container {
+            width: 100%;
+        }
+    }
+}
+// Fin menu 1-4 mobile
+// Fin version mobile
