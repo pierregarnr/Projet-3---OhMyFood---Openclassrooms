@@ -312,9 +312,6 @@ footer .ul-container a {
   font-size: 28px;
   font-weight: 500;
 }
-.allmenu-container .icon-resto-name i {
-  font-size: 26px;
-}
 .allmenu-container .entre-plat-dessert-container {
   display: flex;
   flex-direction: column;
