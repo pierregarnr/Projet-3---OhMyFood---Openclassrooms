@@ -53,6 +53,7 @@ html {
         position: absolute;
         left: 30px;
         top: 28px;
+        font-size: 20px;
     }
 }
 
@@ -338,7 +339,7 @@ footer {
     }
 }
 
-// Pages de menus 1-4 
+// Pages de menus 1-4
 
 .img-menu {
     width: 100%;
@@ -460,10 +461,18 @@ footer {
             color: white;
             background: linear-gradient(178deg, rgb(255, 121, 218) 0%, rgb(147, 86, 220) 100%);
             box-shadow: 0px 5px 15px -4px rgb(0 0 0 / 55%);
+            cursor: pointer;
+        }
+        .button-commander:hover {
+                background: linear-gradient(178deg, rgba(255, 121, 218, 1) 0%, rgba(147, 86, 220, 1) 100%);
+                filter: brightness(1);
+                -webkit-box-shadow: 0px 5px 15px -4px rgba(0, 0, 0, 1.5);
+                box-shadow: 0px 5px 15px -4px rgba(0, 0, 0, 1.5);
+            }
         }
     }
 
-}
+
 
 // Animation glissade - coche 
 .glissade-check {
