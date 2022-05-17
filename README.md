@@ -1,6 +1,7 @@
 # Projet-3   OhMyFood  Openclassrooms
-Pierre Garnier
-Lien Github : https://pierregarnr.github.io/Projet-3---OhMyFood---Openclassrooms/
+Pierre Garnier.
+
+Lien du site : https://pierregarnr.github.io/Projet-3---OhMyFood---Openclassrooms/
 
 
 **Scénario :**
